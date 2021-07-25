@@ -16,13 +16,13 @@ func initDB() (err error) {
 	// 注意！！！这里不要使用:=，我们是给全局变量赋值，然后在main函数中使用全局变量db
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "[dao] sql.Open error")
 	}
 
 	// 尝试鱼数据库建立连接（校验dsn是否正确）
 	err = db.Ping()
 	if err != nil {
-		return err
+		return errors.Wrap(err, "[dao] db.Ping error")
 	}
 
 	return nil
@@ -43,7 +43,7 @@ func queryRowFromTable(t *task, id int) error {
 	// 非常重要：确保QueryRow之后调用Scan方法，否则持有的数据库链接不会被释放
 	err := db.QueryRow(sqlStr, id).Scan(&t.id, &t.title, &t.completed)
 	if err != nil {
-		return errors.Wrap(err, "[dao] QueryRow error")
+		return errors.Wrap(err, "[dao] db.QueryRow error")
 	}
 	return nil
 }
@@ -51,7 +51,7 @@ func queryRowFromTable(t *task, id int) error {
 func main() {
 	err := initDB()
 	if err != nil {
-		fmt.Printf("init db failed, err: %v\n", err)
+		fmt.Printf("init db failed, err: %+v\n", err)
 		return
 	}
 	defer deinitDB()
