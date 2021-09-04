@@ -1,0 +1,109 @@
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 5000 -n 100  -r 10000 -q
+SET: 826.45 requests per second
+GET: 12.36 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 5000 -n 100  -r 10000 -q
+SET: 746.27 requests per second
+GET: 13.46 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 1000 -n 100  -r 10000 -q
+SET: 2083.33 requests per second
+GET: 13.23 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 1000 -n 100  -r 10000 -q
+SET: 1612.90 requests per second
+GET: 12.69 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 1000 -n 100  -r 10000 -q
+SET: 854.70 requests per second
+GET: 14.25 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 1000 -n 100  -r 10000 -q
+SET: 2222.22 requests per second
+GET: 14.36 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 500 -n 100  -r 10000 -q
+SET: 714.29 requests per second
+GET: 13.31 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 500 -n 100  -r 10000 -q
+SET: 2325.58 requests per second
+GET: 9.96 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 200 -n 100  -r 10000 -q
+SET: 2380.95 requests per second
+GET: 26.06 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 200 -n 100  -r 10000 -q
+SET: 2173.91 requests per second
+GET: 14.56 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 200 -n 100  -r 10000 -q
+SET: 724.64 requests per second
+GET: 12.52 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 200 -n 100  -r 10000 -q
+SET: 1923.08 requests per second
+GET: 23.97 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 200 -n 100  -r 10000 -q
+SET: 1538.46 requests per second
+GET: 13.82 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 100 -n 100  -r 10000 -q
+SET: 1666.67 requests per second
+GET: 13.65 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 100 -n 100  -r 10000 -q
+SET: 671.14 requests per second
+GET: 24.55 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 100 -n 100  -r 10000 -q
+SET: 2127.66 requests per second
+GET: 13.24 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 50 -n 100  -r 10000 -q
+SET: 2000.00 requests per second
+GET: 13.01 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 50 -n 100  -r 10000 -q
+SET: 1923.08 requests per second
+GET: 13.83 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 50 -n 100  -r 10000 -q
+SET: 2222.22 requests per second
+GET: 15.20 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 50 -n 100  -r 10000 -q
+SET: 1086.96 requests per second
+GET: 13.34 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 50 -n 100  -r 10000 -q
+SET: 2325.58 requests per second
+GET: 14.39 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 20 -n 100  -r 10000 -q
+SET: 1030.93 requests per second
+GET: 14.01 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 20 -n 100  -r 10000 -q
+SET: 2083.33 requests per second
+GET: 14.70 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 20 -n 100  -r 10000 -q
+SET: 2127.66 requests per second
+GET: 13.32 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 10 -n 100  -r 10000 -q
+SET: 699.30 requests per second
+GET: 14.56 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 10 -n 100  -r 10000 -q
+SET: 2173.91 requests per second
+GET: 13.84 requests per second
+
+wang@e531:~/database/redis-2.8.17/src$ ./redis-benchmark -h 39.96.93.59 -p 6379 -t set,get -d 10 -n 100  -r 10000 -q
+SET: 2173.91 requests per second
+GET: 11.77 requests per second
+
+结论：远端访问redis数据库，value字节越大，性能越差，但是value字节小于1k时，差距不明显。

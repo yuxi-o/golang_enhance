@@ -1,0 +1,211 @@
+////////////////////////////value bytes = 10///////////////////
+//bytesPerKey_v10 = (1702304-508240)/9491 = 125.8 
+# ./redis-benchmark -t set -d 10 -n 10000 -r 100000 ；填充数据
+127.0.0.1:6379> info memory
+# Memory
+used_memory:508240
+used_memory_human:496.33K
+used_memory_rss:4399104
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:8.66
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=9491,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:1702304
+used_memory_human:1.62M
+used_memory_rss:5296128
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:3.11
+mem_allocator:jemalloc-3.6.0
+
+////////////////////////////value bytes = 20///////////////////
+//bytesPerKey_v20 = (1702464-508512)/9490 = 125.8 
+# ./redis-benchmark -t set -d 20 -n 10000 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:508512
+used_memory_human:496.59K
+used_memory_rss:4325376
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:8.51
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=9490,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:1702464
+used_memory_human:1.62M
+used_memory_rss:5120000
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:3.01
+mem_allocator:jemalloc-3.6.0
+
+////////////////////////////value bytes = 50///////////////////
+//bytesPerKey_v50 = (2007704-508920)/9498 = 157.8 
+# ./redis-benchmark -t set -d 50 -n 10000 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:508920
+used_memory_human:496.99K
+used_memory_rss:4304896
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:8.46
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=9498,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:2007704
+used_memory_human:1.91M
+used_memory_rss:5369856
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:2.67
+mem_allocator:jemalloc-3.6.0
+
+
+////////////////////////////value bytes = 100///////////////////
+//bytesPerKey_v100 = (905544-509192)/1979 = 200.3 
+# ./redis-benchmark -t set -d 100 -n 2000 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:509192
+used_memory_human:497.26K
+used_memory_rss:4497408
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:8.83
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=1979,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:905544
+used_memory_human:884.32K
+used_memory_rss:4497408
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:4.97
+mem_allocator:jemalloc-3.6.0
+
+////////////////////////////value bytes = 200///////////////////
+//bytesPerKey_v200 = (821352-509464)/999 = 312.2
+# ./redis-benchmark -t set -d 200 -n 1000 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:509464
+used_memory_human:497.52K
+used_memory_rss:4603904
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:9.04
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=999,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:821352
+used_memory_human:802.10K
+used_memory_rss:4620288
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:5.63
+mem_allocator:jemalloc-3.6.0
+
+////////////////////////////value bytes = 1000///////////////////
+//bytesPerKey_v1000 = (1617376-509600)/996 = 1112.2
+# ./redis-benchmark -t set -d 1000 -n 1000 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:509600
+used_memory_human:497.66K
+used_memory_rss:4620288
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:9.07
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=996,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:1617376
+used_memory_human:1.54M
+used_memory_rss:5607424
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:3.47
+mem_allocator:jemalloc-3.6.0
+
+////////////////////////////value bytes = 5000///////////////////
+//bytesPerKey_v5000 = (1337960-509736)/100 = 8282.2
+# ./redis-benchmark -t set -d 5000 -n 100 -r 100000 -c 1 ;填充数据
+
+127.0.0.1:6379> info keyspace
+# Keyspace
+127.0.0.1:6379> info memory
+# Memory
+used_memory:509736
+used_memory_human:497.79K
+used_memory_rss:5607424
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:11.00
+mem_allocator:jemalloc-3.6.0
+127.0.0.1:6379> info keyspace
+# Keyspace
+db0:keys=100,expires=0,avg_ttl=0
+127.0.0.1:6379> info memory
+# Memory
+used_memory:1337960
+used_memory_human:1.28M
+used_memory_rss:6082560
+used_memory_peak:1016866400
+used_memory_peak_human:969.76M
+used_memory_lua:33792
+mem_fragmentation_ratio:4.55
+mem_allocator:jemalloc-3.6.0
+
+
