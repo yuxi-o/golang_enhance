@@ -28,8 +28,15 @@ func getBaseContext(net.Listener) context.Context {
 }
 
 func HandleHttp() error {
+	go func() {
+		<-errorCtx.Done()
+
+		if err := httpServer.Shutdown(errorCtx); err != nil {
+			fmt.Printf("[httpServer] shutdown httpServer error: %v\n", err)
+		}
+	}()
+
 	if err := httpServer.ListenAndServe(); err != nil {
-		signalChan <- syscall.SIGTERM
 		return fmt.Errorf("[httpServer] ListenAndServe error: %v", err)
 	}
 	return nil
@@ -39,19 +46,20 @@ func HandleSignal() error {
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGUSR1, syscall.SIGUSR2)
 	//signal.Notify(sc)
 
-	for sg := range signalChan {
-		switch sg {
-		case syscall.SIGINT, syscall.SIGQUIT, syscall.SIGTERM:
-			return fmt.Errorf("[signal] exit from signal(%v)", sg)
-		case syscall.SIGUSR1:
-			fmt.Printf("[signal] deal with signal(%v)\n", sg)
-		case syscall.SIGUSR2:
-			if err := httpServer.Shutdown(errorCtx); err != nil {
-				return fmt.Errorf("[signal] shutdown httpServer error: %v", err)
+LOOP:
+	for {
+		select {
+		case <-errorCtx.Done():
+			break LOOP
+		case sg := <-signalChan:
+			switch sg {
+			case syscall.SIGINT, syscall.SIGQUIT, syscall.SIGTERM:
+				return fmt.Errorf("[signal] exit from signal(%v)", sg)
+			case syscall.SIGUSR1:
+				fmt.Printf("[signal] deal with signal(%v)\n", sg)
+			default:
+				fmt.Printf("[signal] Unknown signal(%v)\n", sg)
 			}
-			return fmt.Errorf("[signal] receive signal(%v) and shutdown http server", sg)
-		default:
-			fmt.Printf("[signal] Unknown signal(%v)\n", sg)
 		}
 	}
 
@@ -60,7 +68,6 @@ func HandleSignal() error {
 
 func main() {
 	errorGroup, errorCtx = errgroup.WithContext(context.Background())
-	//eg := new(errgroup.Group)
 
 	httpServeMux := http.NewServeMux()
 	httpServeMux.HandleFunc("/ping", pingHandle)
