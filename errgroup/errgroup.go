@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"net"
 	"net/http"
 	"os"
@@ -18,9 +17,14 @@ var errorGroup *errgroup.Group
 var errorCtx context.Context
 var httpServer *http.Server
 var signalChan chan os.Signal = make(chan os.Signal, 10)
+var shutdownChan chan struct{} = make(chan struct{})
 
 func pingHandle(w http.ResponseWriter, res *http.Request) {
 	fmt.Fprintf(w, "{\"msg\": \"pong\"}")
+}
+func shutdownHandle(w http.ResponseWriter, res *http.Request) {
+	shutdownChan <- struct{}{}
+	close(shutdownChan)
 }
 
 func getBaseContext(net.Listener) context.Context {
@@ -29,22 +33,25 @@ func getBaseContext(net.Listener) context.Context {
 
 func HandleHttp() error {
 	go func() {
-		<-errorCtx.Done()
+		select {
+		case <-errorCtx.Done():
+		case <-shutdownChan:
+			break
+		}
 
-		if err := httpServer.Shutdown(errorCtx); err != nil {
+		timeoutCtx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+		defer cancel()
+
+		if err := httpServer.Shutdown(timeoutCtx); err != nil {
 			fmt.Printf("[httpServer] shutdown httpServer error: %v\n", err)
 		}
 	}()
 
-	if err := httpServer.ListenAndServe(); err != nil {
-		return fmt.Errorf("[httpServer] ListenAndServe error: %v", err)
-	}
-	return nil
+	return httpServer.ListenAndServe()
 }
 
 func HandleSignal() error {
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM, syscall.SIGUSR1, syscall.SIGUSR2)
-	//signal.Notify(sc)
 
 LOOP:
 	for {
@@ -71,6 +78,7 @@ func main() {
 
 	httpServeMux := http.NewServeMux()
 	httpServeMux.HandleFunc("/ping", pingHandle)
+	httpServeMux.HandleFunc("/shutdown", shutdownHandle)
 
 	httpServer = &http.Server{
 		Addr:           ":8088",
@@ -84,7 +92,5 @@ func main() {
 	errorGroup.Go(HandleSignal)
 	errorGroup.Go(HandleHttp)
 
-	if err := errorGroup.Wait(); err != nil {
-		log.Printf("[main] exit: %v", err)
-	}
+	fmt.Printf("[main] exit: %v", errorGroup.Wait())
 }
